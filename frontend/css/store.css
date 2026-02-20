@@ -1,0 +1,22 @@
+/* Store — course catalog cards (t778) */
+
+#rec728719505 .t-btnflex.t-btnflex_type_button {color:#242424;background-color:#ffffff;--border-width:0px;border-style:none !important;border-radius:1000px;box-shadow:none !important;font-family:Inter;font-weight:600;white-space:normal;transition-duration:0.2s;transition-property:background-color,color,border-color,box-shadow,opacity,transform,gap;transition-timing-function:ease-in-out;}
+
+#rec728719505 .t-btnflex.t-btnflex_type_button2 {color:#2e4809;background-color:#d1f994;--border-width:0px;border-style:none !important;border-radius:1000px;box-shadow:none !important;font-family:Inter;font-weight:600;white-space:normal;transition-duration:0.2s;transition-property:background-color,color,border-color,box-shadow,opacity,transform,gap;transition-timing-function:ease-in-out;}
+
+#rec728719505 .t-slds__bullet_active .t-slds__bullet_body{background-color:#222 !important;}#rec728719505 .t-slds__bullet:hover .t-slds__bullet_body{background-color:#222 !important;}
+
+#rec728719505 .t778__content .t778__title{font-size:22px;color:#242424;font-family:'Inter';font-weight:700;}@media screen and (max-width:480px),(orientation:landscape) and (max-height:480px){#rec728719505 .t778__content .t778__title{font-size:16px;}}#rec728719505 .t778__price{font-weight:500;}#rec728719505 .t778__price_old{font-weight:500;}
+
+#rec728719505 .t778__textwrapper .t778__descr{font-size:16px;color:#242424;font-family:'Inter';font-weight:500;}@media screen and (max-width:480px),(orientation:landscape) and (max-height:480px){#rec728719505 .t778__textwrapper .t778__descr{font-size:13px;}}
+
+#rec728719505 .t-popup .t778__title{color:#242424;font-family:'Inter';font-weight:700;}@media screen and (max-width:480px),(orientation:landscape) and (max-height:480px){#rec728719505 .t-popup .t778__title{font-size:16px;}}#rec728719505 .t-popup .t778__descr{color:#242424;font-family:'Inter';font-weight:500;}@media screen and (max-width:480px),(orientation:landscape) and (max-height:480px){#rec728719505 .t-popup .t778__descr{font-size:13px;}}
+
+#rec728719505 .t778__container .t-product__option-title{color:#242424;font-family:'Inter';font-weight:500;}@media screen and (max-width:480px),(orientation:landscape) and (max-height:480px){#rec728719505 .t778__container .t-product__option-title{font-size:13px;}}
+
+#rec728719505 .t778__wrapper:not(.t-popup__container .t778__wrapper),#rec728719505 .t-store__card__wrap_all,#rec728719505 .t-store__card__imgwrapper,#rec728719505 .t778__imgwrapper{border-radius:26px;}
+
+.t778__col.no-link {
+        opacity: 0.4;
+    }
+

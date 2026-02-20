@@ -1,0 +1,14 @@
+/* Widgets — cookie banner (t886), chat button (t898), tooltips */
+
+#rec799542509 .t-btnflex.t-btnflex_type_button {color:#555555;background-color:#f4f4f4;border-style:solid !important;border-color:#999999 !important;--border-width:1px;border-radius:5px;box-shadow:none !important;font-family:Inter;font-weight:400;transition-duration:0.2s;transition-property:background-color,color,border-color,box-shadow,opacity,transform,gap;transition-timing-function:ease-in-out;}@media (hover:hover) {#rec799542509 .t-btnflex.t-btnflex_type_button:not(.t-animate_no-hover):hover {color:#ffffff !important;border-color:#2f2f2f !important;background-color:#2f2f2f !important;}#rec799542509 .t-btnflex.t-btnflex_type_button:not(.t-animate_no-hover):focus-visible {color:#ffffff !important;border-color:#2f2f2f !important;background-color:#2f2f2f !important;}}
+
+#rec799542509 .t886__text{text-align:left;}
+
+#rec799542509 .t886__text{font-size:13px;}
+
+#rec799542509 .t886__wrapper {box-shadow:0px 0px 5px rgba(0,0,0,0.1);}
+
+#rec799542509 .t886__wrapper{border-radius:10px;}
+
+.t300__tooltipster-noir_728887862{background-color:#f4f4f4 !important;color:#242424 !important;border-radius:8px !important;;}
+
