@@ -495,4 +495,64 @@ $(document).on('change','input[name="havepromo"]',function(e){
     };
 });
 </script> <!-- nominify end --> </div> </div> </div> </div> </footer> <!--/footer--> </div> <!--/allrecords--> <!-- Stat --> <!-- Yandex.Metrika counter 96890535 --> <script type="text/javascript" data-tilda-cookie-type="analytics">setTimeout(function(){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","assets/85267_tag.js","ym");window.mainMetrikaId='96890535';ym(window.mainMetrikaId,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,params:{__ym:{"ymCms":{"cms":"tilda","cmsVersion":"1.0","cmsCatalog":"1"}}},ecommerce:"dataLayer"});},2000);</script> <noscript><div><img src="assets/63383_96890535" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter --> <script type="text/javascript">if(!window.mainTracker) {window.mainTracker='tilda';}
-window.tildastatcookie='no';setTimeout(function(){(function(d,w,k,o,g) {var n=d.getElementsByTagName(o)[0],s=d.createElement(o),f=function(){n.parentNode.insertBefore(s,n);};s.type="text/javascript";s.async=true;s.key=k;s.id="tildastatscript";s.src=g;if(w.opera=="[object Opera]") {d.addEventListener("DOMContentLoaded",f,false);} else {f();}})(document,window,'b78d57078a3658dc466eabb4907fc485','script','assets/71846_tilda-stat-1.0.min.js');},2000);</script>  </body></html>
+window.tildastatcookie='no';setTimeout(function(){(function(d,w,k,o,g) {var n=d.getElementsByTagName(o)[0],s=d.createElement(o),f=function(){n.parentNode.insertBefore(s,n);};s.type="text/javascript";s.async=true;s.key=k;s.id="tildastatscript";s.src=g;if(w.opera=="[object Opera]") {d.addEventListener("DOMContentLoaded",f,false);} else {f();}})(document,window,'b78d57078a3658dc466eabb4907fc485','script','assets/71846_tilda-stat-1.0.min.js');},2000);</script>
+<!-- Lead capture: intercept Tilda forms and send to backend API -->
+<script>
+(function () {
+  function sendLead(data) {
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).catch(function () {});
+  }
+
+  function extractFields(form) {
+    var fd = {};
+    var inputs = form.querySelectorAll('input, select, textarea');
+    for (var i = 0; i < inputs.length; i++) {
+      var el = inputs[i];
+      var name = (el.getAttribute('name') || '').toLowerCase();
+      var val = el.value || '';
+      if (!val) continue;
+      if (name.indexOf('name') !== -1 || name.indexOf('имя') !== -1) fd.name = val;
+      else if (name.indexOf('phone') !== -1 || name.indexOf('тел') !== -1) fd.phone = val;
+      else if (name.indexOf('email') !== -1 || name.indexOf('почт') !== -1) fd.email = val;
+      else if (name.indexOf('course') !== -1 || name.indexOf('курс') !== -1) fd.course = val;
+    }
+    return fd;
+  }
+
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form || !form.matches('form')) return;
+    var data = extractFields(form);
+    if (data.name && data.phone) sendLead(data);
+  }, true);
+
+  var origOpen = XMLHttpRequest.prototype.open;
+  var origSend = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.open = function (method, url) {
+    this._leadUrl = url;
+    return origOpen.apply(this, arguments);
+  };
+  XMLHttpRequest.prototype.send = function (body) {
+    if (this._leadUrl && this._leadUrl.indexOf('tilda') !== -1 && body) {
+      try {
+        var params = new URLSearchParams(body);
+        var data = {};
+        params.forEach(function (v, k) {
+          var kl = k.toLowerCase();
+          if (kl.indexOf('name') !== -1 || kl.indexOf('имя') !== -1) data.name = v;
+          else if (kl.indexOf('phone') !== -1 || kl.indexOf('тел') !== -1) data.phone = v;
+          else if (kl.indexOf('email') !== -1 || kl.indexOf('почт') !== -1) data.email = v;
+          else if (kl.indexOf('course') !== -1 || kl.indexOf('курс') !== -1) data.course = v;
+        });
+        if (data.name && data.phone) sendLead(data);
+      } catch (e) {}
+    }
+    return origSend.apply(this, arguments);
+  };
+})();
+</script>
+</body></html>
